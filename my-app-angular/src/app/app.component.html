@@ -1,9 +1,11 @@
-<h1>Welcome {{name}}</h1>
+<h1>Welcome {{ name }}</h1>
 
-<button (click)="clickButton()"><img [src]="imageUrl" class="image-button"/></button>
+<button (click)="clickButton()">
+  <img [src]="imageUrl" class="image-button" />
+</button>
 
 <div *ngIf="isLoggedIn">
-  <h1>WELCOME {{name}}</h1>
+  <h1>WELCOME {{ name }}</h1>
   <button (click)="logout()">Logout</button>
 </div>
 
@@ -12,28 +14,39 @@
   <button (click)="login()">Login</button>
 </div>
 
-<p *ngIf="isLoggedIn; else notLoggedIn">You are logged in!</p>
+<p *ngIf="isLoggedIn; else notLoggedIn">
+  You are logged in!
+</p>
 
 <ng-template #notLoggedIn>
   <p>You are NOT logged in!</p>
 </ng-template>
 
-<ul>
-  <li *ngFor="let item of items">
-      {{item}}
-  </li>
-</ul>
+<hr />
+
+<h2>Shopping Cart</h2>
 
 <ul>
   <li *ngFor="let item of items; let i = index">
-      {{i}} - {{item}}
+    {{ i }} - {{ item }}
+
+    <button (click)="removeFromCart(i)">
+      Remove
+    </button>
   </li>
 </ul>
 
-<div [ngClass]="{'highlight': isActive}">
+<hr />
+
+<div [ngClass]="{ 'highlight': isActive }">
   Conditional Class
 </div>
 
-<div [ngStyle]="{'color': textColor, 'font-size': fontSize + 'px'}">
+<div
+  [ngStyle]="{
+    color: textColor,
+    'font-size': fontSize + 'px'
+  }"
+>
   Inline style with NGStyle
 </div>
